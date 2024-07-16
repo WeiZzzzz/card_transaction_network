@@ -250,7 +250,8 @@ class sbmtm():
                 # while abs(delta) > epsilon:
                 #     delta = state_tmp.multiflip_mcmc_sweep(niter=10, beta=np.inf)[0]
                 #     print(delta)
-                print(state_tmp)
+                print(state_tmp.entropy())
+                # print(state_tmp)
 
                 mdl_tmp = state_tmp.entropy()
                 if mdl_tmp < mdl:
