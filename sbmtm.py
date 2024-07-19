@@ -24,7 +24,7 @@ class sbmtm():
         self.mdl = np.nan ## minimum description length of inferred state
         self.L = np.nan ## number of levels in hierarchy
 
-    def make_graph(self,list_texts, documents = None, counts=True, n_min = None):
+    def make_graph(self,list_texts, documents = None, counts=True, n_min = None, count_log = False):
         '''
         Load a corpus and generate the word-document network
 
@@ -77,6 +77,8 @@ class sbmtm():
                 kind[w] = 1
                 if counts:
                     e = g.add_edge(d, w)
+                    if count_log:
+                        count = np.log2(count+1)
                     ecount[e] = count
                 else:
                     for n in range(count):
