@@ -212,7 +212,7 @@ class sbmtm():
         self.documents = [ self.g.vp['name'][v] for v in  self.g.vertices() if self.g.vp['kind'][v]==0   ]
 
 
-    def fit(self,overlap = False, n_init = 1, verbose=False, epsilon=1e-3):
+    def fit(self,overlap = False, n_init = 1, verbose=False, epsilon=1e-3, distribution=[]):
         '''
         Fit the sbm to the word-document network.
         - overlap, bool (default: False). Overlapping or Non-overlapping groups.
@@ -230,7 +230,7 @@ class sbmtm():
             state_args = {'clabel': clabel, 'pclabel': clabel}
             if "count" in g.ep:
                 state_args["eweight"] = g.ep.count
-
+            state_args['rec_types'] = distribution
             ## the inference
             mdl = np.inf ##
             for i_n_init in range(n_init):
