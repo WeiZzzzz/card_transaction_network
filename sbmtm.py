@@ -230,7 +230,7 @@ class sbmtm():
             state_args = {'clabel': clabel, 'pclabel': clabel}
             if "count" in g.ep:
                 state_args["eweight"] = g.ep.count
-            state_args['rec_types'] = distribution
+            # state_args['rec_types'] = distribution
             ## the inference
             mdl = np.inf ##
             for i_n_init in range(n_init):
